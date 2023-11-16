@@ -127,11 +127,13 @@ async def private_receive_handler(c: Client, m: Message):
             text=msg_text.format(get_name(log_msg), humanbytes(get_media_file_size(m)), online_link, stream_link), 
             quote=True, 
             disable_web_page_preview=True, 
-            reply_markup=InlineKeyboardMarkup([
-                [InlineKeyboardButton("🖥️  ꜱᴛʀᴇᴀᴍ  🖥️", url=stream_link),
-                 InlineKeyboardButton('📥  ᴅᴏᴡɴʟᴏᴀᴅ  📥', url=online_link)],
-                [InlineKeyboardButton('🎪  ꜱᴜʙꜱᴄʀɪʙᴇ ᴍʏ ʏᴛ ᴄʜᴀɴɴᴇʟ  🎪', url='https://youtube.com/@Tech_VJ')]])
-        )
+            reply_markup=InlineKeyboardMarkup( 
+                [ 
+                    [InlineKeyboardButton("🖥STREAM ", url=stream_link), 
+                     InlineKeyboardButton('Dᴏᴡɴʟᴏᴀᴅ📥', url=online_link)]  
+                ] 
+            ) 
+        ) 
     except FloodWait as e: 
         print(f"Sleeping for {str(e.x)}s") 
         await asyncio.sleep(e.x) 
